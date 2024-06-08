@@ -42,20 +42,21 @@ topMenuEl.style.backgroundColor=colorNav;
 topMenuEl.classList.add("flex-around");
 let anchor;
 let obj;
+let subLinkArray=new Array();
 for(let i=0;i<menuLinks.length;i++){
     //obj.add(menuLinks[i]);
     anchor= document.createElement("a");
     obj=new Object();
     obj=menuLinks[i];
     //console.log(obj);
+   
     Object.entries(obj).forEach(([key, value]) => {
         if(key=='href')
         anchor.setAttribute(key,value);
         if(key=='text')
         anchor.textContent=value;
         if(key=='subLinks'){
-        let subLinkArray=new Array();
-        subLinkArray=value;
+        subLinkArray.push(value);
         }
         console.log(`${key} ${value}`); 
       });
@@ -63,7 +64,7 @@ for(let i=0;i<menuLinks.length;i++){
       topMenuEl.appendChild(anchor);
    
 }
-
+console.log(subLinkArray);
 let subMenuEl=document.getElementById("sub-menu");
 let subMenuColor = 'var(--sub-menu-bg)';
 subMenuEl.style.height="100%";
