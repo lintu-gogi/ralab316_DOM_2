@@ -116,6 +116,10 @@ if(e.target.classList!="active"){
             console.log(" Sublinks= "+item.subLinks);
 
           }
+          else{
+            let mEle=e.target.textContent;
+            mainEle.innerHTML=`<h1>${mEle}</h1>`;
+          }
       }
   });
 }
@@ -165,6 +169,23 @@ for(let i=0;i<sLinks.length;i++){
       subMenuEl.appendChild(anchor);
    
 }
+let subMenuLinks= document.querySelectorAll("#sub-menu a");
+subMenuEl.addEventListener("click",(e)=>{
+  e.preventDefault();
+  if (e.target.nodeName != 'A') return;
+  //Logging the anchor elements
+  console.log(e.target);
+  let mEle=e.target.textContent;
+
+
+  subMenuEl.style.top="0";
+  topMenuLinks.forEach((item) => {
+    item.classList.remove('active');  
+  });
+  //mainEle.innerHTML= `<h1>Sub Menu</h1>`;
+  //mainEle.innerHTML=mEle;
+  mainEle.innerHTML=`<h1>${mEle}</h1>`;
+});
 
 }
 
