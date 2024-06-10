@@ -35,6 +35,9 @@ mainEle.classList.add("flex-ctr");
 console.log(mainEle.outerHTML);
 const topMenuEl=document.getElementById("top-menu");
 //document.head.appendChild(navEle);
+menuLinks.forEach(element => {
+  console.log(element);
+});
 
 topMenuEl.style.height="100%";
 //navEle.style.backgroundColor="blue";
@@ -85,14 +88,84 @@ console.log(e.target);
 if(e.target.classList=='active')
   {
     e.target.classList.remove('active');
+    subMenuEl.style.top="0"
     return;
   }
+
+  //Any other active link will get removed
 topMenuLinks.forEach((item) => {
   item.classList.remove('active');
+  subMenuEl.style.top="0%"
+});
+if(e.target.classList!="active"){
+  console.log("inactive, make active");
+  e.target.classList.add('active');
+  //subMenuEl.style.top="100%"
+  // Check if item has sublinks
+    menuLinks.forEach(item => {
+    if(item.text==e.target.textContent)
+      {
+        console.log(item.text + e.target.textContent);
+        console.log(item.text);
+        //console.log(" Sublinks= "+item.subLinks);
+        if(item.subLinks)
+          {
+            subMenuEl.style.top="100%"
+            buildSubmenu(item.subLinks);
+
+            console.log(" Sublinks= "+item.subLinks);
+
+          }
+      }
+  });
+}
 });
 
-e.target.classList.add('active');
+  //console.log(e.target.menuLinks.subLinks.length);
+  //console.log(e.target.subLinks);
 
-});
+    // Check if item has sublinks
+    //topMenuLinks.forEach(item => {
+    
+  //});
+
+   /* if (e.target.subLinks) {
+     // const submenu = createMenu(item.subLinks);
+      subMenuEl.style.top="100%"
+      console.log(e.target.subLinks);
+      //console.log(e.target.subLinks.length);
+      //menuItem.appendChild(submenu);
+    }*/
+
+    //menu.appendChild(menuItem);
+
+//e.target.classList.add('active');
+//subMenuEl.style.top="100%"
+function buildSubmenu(sLinks){
+  
+//subMenuEl.classList.toggle("hidden");
+//subMenuEl.classList.remove('active');
+let anchor;
+let obj;
+for(let i=0;i<sLinks.length;i++){
+    //obj.add(menuLinks[i]);
+    anchor= document.createElement("a");
+    obj=new Object();
+    obj=sLinks[i];
+    //console.log(obj);
+   
+    Object.entries(obj).forEach(([key, value]) => {
+        if(key=='href')
+        anchor.setAttribute(key,value);
+        if(key=='text')
+        anchor.textContent=value;
+       
+      });
+   
+      subMenuEl.appendChild(anchor);
+   
+}
+
+}
 
 //console.log(topMenuLinks[0]);
