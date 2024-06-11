@@ -125,26 +125,7 @@ if(e.target.classList!="active"){
 }
 });
 
-  //console.log(e.target.menuLinks.subLinks.length);
-  //console.log(e.target.subLinks);
-
-    // Check if item has sublinks
-    //topMenuLinks.forEach(item => {
-    
-  //});
-
-   /* if (e.target.subLinks) {
-     // const submenu = createMenu(item.subLinks);
-      subMenuEl.style.top="100%"
-      console.log(e.target.subLinks);
-      //console.log(e.target.subLinks.length);
-      //menuItem.appendChild(submenu);
-    }*/
-
-    //menu.appendChild(menuItem);
-
-//e.target.classList.add('active');
-//subMenuEl.style.top="100%"
+  
 function buildSubmenu(sLinks){
   
 //subMenuEl.classList.toggle("hidden");
@@ -152,7 +133,7 @@ function buildSubmenu(sLinks){
 let anchor;
 let obj;
 for(let i=0;i<sLinks.length;i++){
-    //obj.add(menuLinks[i]);
+    
     anchor= document.createElement("a");
     obj=new Object();
     obj=sLinks[i];
@@ -189,4 +170,4 @@ subMenuEl.addEventListener("click",(e)=>{
 
 }
 
-//console.log(topMenuLinks[0]);
+
